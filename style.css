@@ -1,0 +1,486 @@
+:root {
+  --cream: #fbf4ec;
+  --blush: #f4d3d6;
+  --rose: #d98ba0;
+  --mauve: #9b6b77;
+  --lavender: #cbb8e6;
+  --sage: #a9bfa0;
+  --ink: #7a5560;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Jost', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 85% 5%, rgba(255, 214, 170, 0.55), transparent 55%),
+    radial-gradient(ellipse at 5% 95%, rgba(203, 184, 230, 0.45), transparent 55%),
+    radial-gradient(ellipse at 50% 50%, #fdf6ef 0%, #f8e8e2 70%, #f1dcd8 100%);
+  background-color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Grano de película para el toque nostálgico */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.09;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Luz dorada que se mueve lento */
+.glow {
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(255, 220, 180, 0.45), transparent 35%),
+    radial-gradient(circle at 25% 70%, rgba(246, 198, 207, 0.4), transparent 40%);
+  filter: blur(30px);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  to { transform: translate(-6%, 4%) scale(1.08); }
+}
+
+/* ---------- Header ---------- */
+header {
+  width: 100%;
+  text-align: center;
+  padding: 40px 16px 4px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  opacity: 0.8;
+}
+
+h1 {
+  font-family: 'Sacramento', cursive;
+  font-weight: 400;
+  font-size: clamp(3.6rem, 13vw, 6.5rem);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.divider {
+  color: var(--rose);
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding: 0 16px 40px;
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---------- Regalo ---------- */
+.gift {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  animation: pulse 2s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Halo suave que late */
+.gift::before {
+  content: '';
+  position: absolute;
+  inset: -30px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 200, 0.9), transparent 65%);
+  animation: halo 2s ease-in-out infinite;
+}
+
+.box {
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  width: 156px;
+  height: 115px;
+  background: linear-gradient(160deg, #f9e1e1, #efc4c9);
+  border-radius: 14px;
+  box-shadow: 0 18px 35px rgba(155, 107, 119, 0.25);
+}
+
+.lid {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 180px;
+  height: 38px;
+  background: linear-gradient(160deg, #f6d3d6, #e8b3bb);
+  border-radius: 12px;
+  z-index: 2;
+  box-shadow: 0 6px 12px rgba(155, 107, 119, 0.15);
+}
+
+/* Listones lavanda */
+.box::before,
+.lid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #c6b2e2, #dccdf0, #c6b2e2);
+}
+
+/* Moño */
+.bow {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+.bow::before,
+.bow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 46px;
+  height: 34px;
+  border: 8px solid #cdb9e6;
+  border-radius: 50%;
+}
+
+.bow::before {
+  right: -2px;
+  transform: rotate(-22deg);
+}
+
+.bow::after {
+  left: -2px;
+  transform: rotate(22deg);
+}
+
+.hint {
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  animation: fadeBlink 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+
+@keyframes halo {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes fadeBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Apertura */
+.gift.open {
+  animation: shake 0.45s ease-in-out;
+  cursor: default;
+}
+
+.gift.open::before {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.gift.open .lid {
+  animation: lidOff 0.75s 0.25s cubic-bezier(0.5, 0, 0.75, 0) forwards;
+}
+
+.gift.open .box {
+  animation: boxOut 0.5s 0.65s ease-in forwards;
+}
+
+.scene.leaving .hint {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes lidOff {
+  to {
+    transform: translateY(-220px) rotate(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes boxOut {
+  to {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Florecitas que salen del regalo */
+.burst {
+  position: fixed;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  pointer-events: none;
+  z-index: 5;
+  animation: burst 1.4s ease-out forwards;
+}
+
+@keyframes burst {
+  from {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 1;
+  }
+  to {
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.2) rotate(90deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Ramo ---------- */
+#bouquet {
+  width: min(460px, 94vw);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 16px 24px rgba(155, 107, 119, 0.22)) sepia(0.08);
+}
+
+/* Tallos que se dibujan */
+.stem {
+  fill: none;
+  stroke: #94b08b;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  animation: draw 0.9s ease-in-out forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Elementos que crecen (pétalos, hojas, flores) */
+.grow {
+  transform: scale(0);
+  animation: grow 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes grow {
+  to { transform: scale(1); }
+}
+
+/* Pompompurin se balancea suavecito */
+.bob {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bob 3s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.purin {
+  cursor: pointer;
+  outline: none;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.purin.poked {
+  animation: squish 0.7s ease-out;
+}
+
+@keyframes squish {
+  0% { transform: scale(1, 1); }
+  20% { transform: scale(1.12, 0.86); }
+  45% { transform: scale(0.93, 1.1); }
+  70% { transform: scale(1.04, 0.97); }
+  100% { transform: scale(1, 1); }
+}
+
+.purin .eyes-open,
+.purin .eyes-happy,
+.purin .cheeks {
+  transition: opacity 0.2s;
+}
+
+.purin .eyes-happy,
+.purin .cheeks {
+  opacity: 0;
+}
+
+.purin.poked .eyes-open {
+  opacity: 0;
+}
+
+.purin.poked .eyes-happy {
+  opacity: 1;
+}
+
+.purin.poked .cheeks {
+  opacity: 0.8;
+}
+
+/* Corazoncitos y globito al tocarlo */
+.love {
+  position: fixed;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  pointer-events: none;
+  z-index: 6;
+  opacity: 0;
+  animation: loveUp 1.4s ease-out forwards;
+}
+
+.love-text {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--mauve);
+  white-space: nowrap;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 250, 246, 0.85);
+  box-shadow: 0 6px 16px rgba(155, 107, 119, 0.18);
+}
+
+@keyframes loveUp {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--dx)), calc(-50% - var(--rise))) scale(1.15);
+    opacity: 0;
+  }
+}
+
+.purin-hint {
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  opacity: 0;
+  margin-top: -14px;
+  transition: opacity 0.8s;
+}
+
+.purin-hint.show {
+  opacity: 0.8;
+}
+
+.fade {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Mensaje */
+.message {
+  font-family: 'Sacramento', cursive;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 9vw, 3.6rem);
+  text-align: center;
+  min-height: 1.3em;
+  color: var(--ink);
+}
+
+.message.typing::after {
+  content: '|';
+  margin-left: 2px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6em;
+  font-weight: 300;
+  animation: fadeBlink 0.8s infinite;
+}
+
+/* ---------- Pétalos de fondo ---------- */
+#petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.petal {
+  position: absolute;
+  top: -30px;
+  border-radius: 100% 0 100% 0;
+  opacity: 0.65;
+  filter: blur(0.4px);
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(var(--spin));
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Fatis bonita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Sacramento&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Luz cálida y pétalos de fondo -->
+  <div class="glow" aria-hidden="true"></div>
+  <div id="petals" aria-hidden="true"></div>
+
+  <header>
+    <h1>Para Fatis</h1>
+    <span class="divider" aria-hidden="true">❀</span>
+  </header>
+
+  <main>
+    <!-- Regalo -->
+    <section id="giftScene" class="scene">
+      <button id="gift" class="gift" aria-label="Abrir regalo">
+        <span class="lid">
+          <span class="bow"></span>
+        </span>
+        <span class="box"></span>
+      </button>
+      <p class="hint">toca para abrir</p>
+    </section>
+
+    <!-- Ramo -->
+    <section id="bouquetScene" class="scene hidden">
+      <svg id="bouquet" viewBox="0 -30 400 510" aria-label="Ramo de gerberas y rosas rosas"></svg>
+      <h2 id="message" class="message"></h2>
+      <p id="purinHint" class="purin-hint">psst… toca a Pompompurin ♡</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
